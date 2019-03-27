@@ -21,17 +21,12 @@ def get_input():
     return float(input('Type the amount please: '))
 
 
-# Get the first transaction
-add_transaction(get_input())
+while True:
+    # Get the first transaction
+    add_transaction(get_input())
 
-# Get the second transaction
-add_transaction(get_input())
-
-# Get the third transaction
-add_transaction(get_input())
-
-# Output the blockchain
-for block in blockchain:
-    print(block)
+    # Output the blockchain
+    for block in blockchain:
+        print(block)
 
 print('Done!')
