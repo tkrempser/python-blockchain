@@ -16,7 +16,7 @@ def get_input():
     """Get the user input and returns it as float.
 
     Returns:
-        float: The float amount.
+        float: The user amount.
     """
     return float(input('Type the amount please: '))
 
@@ -30,5 +30,8 @@ add_transaction(get_input())
 # Get the third transaction
 add_transaction(get_input())
 
-# Output the blockchain list
-print(blockchain)
+# Output the blockchain
+for block in blockchain:
+    print(block)
+
+print('Done!')
