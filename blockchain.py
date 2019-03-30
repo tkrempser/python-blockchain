@@ -2,6 +2,26 @@
 blockchain = []
 
 
+def verify_blockchain():
+    """Verify if a given blockchain is valid.
+    
+    Returns:
+        True if valid else returns False.
+    """
+    is_valid = True
+
+    for index, block in enumerate(blockchain):
+        if index == 0:
+            continue
+        elif block[0] == blockchain[index - 1]:
+            is_valid = True
+        else:
+            is_valid = False
+            break
+
+    return is_valid
+
+
 def get_last_block():
     """Returns the last blockchain value.
     
@@ -49,6 +69,7 @@ def show_options():
     print('Select an option')
     print('1: Add a new transaction')
     print('2: Output blockchain')
+    print('h: Hack blockchain')
     print('q: Quit')
 
 
@@ -64,9 +85,17 @@ while True:
         add_transaction(get_transaction_amount(), get_last_block())
     elif choice == '2':
         print_blockchain_blocks()
+    elif choice == 'h':
+        if len(blockchain) > 0:
+            blockchain[0] = ['hack']
     elif choice == 'q':
         break
     else:
         print('Invalid option.')
+
+    # Verify the blockchain before continue
+    if not verify_blockchain():
+        print('Invalid blockchain!')
+        break
 
 print('Done!')
