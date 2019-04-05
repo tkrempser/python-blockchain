@@ -2,37 +2,6 @@
 blockchain = []
 
 
-def verify_blockchain():
-    """Verify if a given blockchain is valid.
-    
-    Returns:
-        True if valid else returns False.
-    """
-    is_valid = True
-
-    for index, block in enumerate(blockchain):
-        if index == 0:
-            continue
-        elif block[0] == blockchain[index - 1]:
-            is_valid = True
-        else:
-            is_valid = False
-            break
-
-    return is_valid
-
-
-def get_last_block():
-    """Returns the last blockchain value.
-    
-    Returns:
-        The last blockchain value or None if the blockchain is empty.
-    """
-    if blockchain:
-        return blockchain[-1]
-    return None
-
-
 def add_transaction(transaction_amount, last_transaction=[1]):
     """Append a new transaction to the blockchain.
     
@@ -53,6 +22,37 @@ def get_transaction_amount():
         float: The user amount.
     """
     return float(input('Type the amount please: '))
+
+
+def get_last_block():
+    """Returns the last blockchain value.
+    
+    Returns:
+        The last blockchain value or None if the blockchain is empty.
+    """
+    if blockchain:
+        return blockchain[-1]
+    return None
+
+
+def verify_blockchain():
+    """Verify if a given blockchain is valid.
+    
+    Returns:
+        True if valid else returns False.
+    """
+    is_valid = True
+
+    for index, block in enumerate(blockchain):
+        if index == 0:
+            continue
+        elif block[0] == blockchain[index - 1]:
+            is_valid = True
+        else:
+            is_valid = False
+            break
+
+    return is_valid
 
 
 def print_blockchain_blocks():
