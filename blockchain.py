@@ -77,7 +77,9 @@ def get_choice():
     return input('Your choice: ')
 
 
-while True:
+waiting_for_input = True
+
+while waiting_for_input:
     show_options()
     choice = get_choice()
 
@@ -89,7 +91,7 @@ while True:
         if len(blockchain) > 0:
             blockchain[0] = ['hack']
     elif choice == 'q':
-        break
+        waiting_for_input = False
     else:
         print('Invalid option.')
 
@@ -97,5 +99,7 @@ while True:
     if not verify_blockchain():
         print('Invalid blockchain!')
         break
-
+else:
+    print('User left.')
+    
 print('Done!')
