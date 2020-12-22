@@ -1,2 +1,2 @@
 # python-blockchain
-Basic blockchain project from [Maximilian Schwarzmüller's Python course](https://www.udemy.com/learn-python-by-building-a-blockchain-cryptocurrency/).
+Basic blockchain project from Academind's Python course.
