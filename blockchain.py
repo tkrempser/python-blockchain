@@ -4,7 +4,7 @@ blockchain = []
 
 def add_transaction(transaction_amount, last_transaction=[1]):
     """Append a new transaction to the blockchain.
-    
+
     Args:
         transaction_amount (int): The amount value to be appended.
         last_transaction (int): The last transaction on the blockchain (default [1]).
@@ -21,12 +21,12 @@ def get_transaction_amount():
     Returns:
         float: The user amount.
     """
-    return float(input('Type the amount please: '))
+    return float(input("Type the amount please: "))
 
 
 def get_last_block():
     """Returns the last blockchain value.
-    
+
     Returns:
         The last blockchain value or None if the blockchain is empty.
     """
@@ -37,7 +37,7 @@ def get_last_block():
 
 def verify_blockchain():
     """Verify if a given blockchain is valid.
-    
+
     Returns:
         True if valid else returns False.
     """
@@ -57,49 +57,54 @@ def verify_blockchain():
 
 def print_blockchain_blocks():
     """Output the blockchain blocks"""
-    print('-' * 30)
-    print('Current blockchain: ' + str(blockchain))
+    print("-" * 30)
+    print("Current blockchain: " + str(blockchain))
     for index, block in enumerate(blockchain):
-        print('Block ' + str(index) + ': ' + str(block))
+        print("Block " + str(index) + ": " + str(block))
 
 
 def show_options():
     """Show available options"""
-    print('-' * 30)
-    print('Select an option')
-    print('1: Add a new transaction')
-    print('2: Output blockchain')
-    print('h: Hack blockchain')
-    print('q: Quit')
+    print("-" * 30)
+    print("Select an option")
+    print("1: Add a new transaction")
+    print("2: Output blockchain")
+    print("h: Hack blockchain")
+    print("q: Quit")
 
 
 def get_choice():
-    return input('Your choice: ')
+    return input("Your choice: ")
 
 
-waiting_for_input = True
+def main():
+    waiting_for_input = True
 
-while waiting_for_input:
-    show_options()
-    choice = get_choice()
+    while waiting_for_input:
+        show_options()
+        choice = get_choice()
 
-    if choice == '1':
-        add_transaction(get_transaction_amount(), get_last_block())
-    elif choice == '2':
-        print_blockchain_blocks()
-    elif choice == 'h':
-        if len(blockchain) > 0:
-            blockchain[0] = ['hack']
-    elif choice == 'q':
-        waiting_for_input = False
+        if choice == "1":
+            add_transaction(get_transaction_amount(), get_last_block())
+        elif choice == "2":
+            print_blockchain_blocks()
+        elif choice == "h":
+            if len(blockchain) > 0:
+                blockchain[0] = ["hack"]
+        elif choice == "q":
+            waiting_for_input = False
+        else:
+            print("Invalid option.")
+
+        # Verify the blockchain before continue
+        if not verify_blockchain():
+            print("Invalid blockchain!")
+            break
     else:
-        print('Invalid option.')
+        print("User left.")
 
-    # Verify the blockchain before continue
-    if not verify_blockchain():
-        print('Invalid blockchain!')
-        break
-else:
-    print('User left.')
-    
-print('Done!')
+    print("Done!")
+
+
+if __name__ == "__main__":
+    main()
